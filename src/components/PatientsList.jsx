@@ -9,9 +9,10 @@ const PatientsList = ({patients, setPatients}) => {
           <span className="font-bold text-indigo-600"> Pacientes</span>
         </p>
 
-        <div className='h-screen md:overflow-y-scroll mr-10 md:mr-0'>
+        <div className='md:h-screen md:overflow-y-scroll mr-10 md:mr-0'>
 
-        {patients.map(patient => <Patient patient={patient} key={patient.id} setPatients={setPatients}/>)}
+          {patients.map(patient => <Patient patient={patient} key={patient.id} setPatients={setPatients}/>)}
+
         </div>
     </div>
   )
