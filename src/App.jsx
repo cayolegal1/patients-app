@@ -7,13 +7,22 @@ function App() {
 
  const [patients, setPatients] = useState([])
 
+ document.title = "Veterinaria - Pacientes App"
+
   return (
+
     <div className='container mx-auto mt-10'>
+
       <Header />
+
       <div className='mt-12 md:flex'>
+
         <Form setPatients={setPatients}/>
+        
         <PatientsList patients={patients} setPatients={setPatients}/>
+
       </div>
+
     </div>
   )
 }
