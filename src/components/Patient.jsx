@@ -39,6 +39,7 @@ const Patient = ({patient, setPatients}) => {
         </p>
 
         <div className="mt-5 flex justify-between">
+          
           <button 
             className="font-bold rounded bg-sky-600 py-2 px-4 text-white hover:bg-sky-700 transition-colors"> 
 
@@ -52,6 +53,7 @@ const Patient = ({patient, setPatients}) => {
 
             Eliminar 
           </button>
+
         </div>
     </div>
   )

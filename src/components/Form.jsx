@@ -1,6 +1,7 @@
 import { useState } from "react"
 import FormInputs from "./FormInputs";
 import FormTitle from "./FormTitle";
+import { validatorForm } from "../helpers/validator";
 
 const Form = ({setPatients}) => {
 
@@ -12,7 +13,11 @@ const Form = ({setPatients}) => {
     date: "2022-08-13",
     sintomas: "Tos",
     id: Math.random() * 112
-  })
+  });
+
+  const [isValid, setIsValid] = useState(true);
+
+  const [error, setError] = useState('');
 
 
   const updateValue = e => {
@@ -36,51 +41,47 @@ const Form = ({setPatients}) => {
 
     const formData = new FormData(form);
 
-    const validator = [...formData.values()]
+    const validator = validatorForm(formData, setIsValid, setError)
 
-    const emailExpReg =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if(validator) {
 
-    if(formData.get("petname").length >= 3 
-      && formData.get("ownername").length >= 3 
-      && formData.get("email").match(emailExpReg)
-      && formData.get("date")
-      && formData.get("sintomas").length >= 3
-      ){
-
-        setValue(val => 
-
-          ({
-            id: Math.random(),
-            ...val
-          })
-        )
-
-        setPatients(prev => ([value, ...prev]))   
-
-        setValue(prev => prev);
-        
-        form.reset();
-      } 
-
-
-      if(validator.includes('')) {
-
-        console.log("vacio")
-        console.log(validator)
-
-      }
-      
-    else console.log("Mal");
+      setIsValid(true)
+  
+      setValue(val => 
+  
+        ({
+          id: Math.random(),
+          ...val
+        })
+      )
+  
+      setPatients(prev => ([value, ...prev]))   
+  
+      setValue(prev => prev);
+          
+      form.reset();
+    }   
   }
 
-  
+
   return (
+
     <div className="md:w-1/2 lg:w-2/5 md:flex flex-col ml-8 text-center mb-2">
 
       <FormTitle />
 
       <form action="" className="mt-5 shadow-md bg-white rounded-md py-10 px-5 text-left mr-10 md:mr-0">
         
+        {!isValid ? 
+
+          <div className="bg-red-600 font-bold text-white rounded-md text-center mb-6 py-2 px-0 md:w-10/12 m-auto">
+
+            {error}
+
+          </div>  
+
+        : ''}
+
         <FormInputs value={value} updateValue={updateValue} addPatient={addPatient}/>
 
       </form>
