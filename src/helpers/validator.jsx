@@ -1,33 +1,53 @@
 const validatorForm = (form, setIsValid, setError) => {
 
-    const validator = [...form.values()]
+    const emailExpReg =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-    const emailExpReg =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const petname = document.getElementById('petname');
+
+    const ownername = document.getElementById('ownername');
+
+    const email = document.getElementById('email');
+
+    const date = document.getElementById('date')
+
+    const sintomas = document.getElementById('sintomas');
+
+    const elements = [petname, ownername, email, date, sintomas]
+
+    elements.forEach(item => item.style.borderColor = '#e5e7eb' )
 
     if(!form.get("email").match(emailExpReg)) {
-
-      setIsValid(false)
-      setError("El email no es válido. Intenta con otro.")
+        
+      email.style.borderColor = 'red';
+      setIsValid(false);
+      setError("El email no es válido.");
       return false 
+
     }
 
-    if(validator.includes('')) {
+    const pet = inputChanger("petname", petname, form, setIsValid, setError);
+    const own = inputChanger("ownername", ownername, form, setIsValid, setError);
+    const syntom = inputChanger("sintomas", sintomas, form, setIsValid, setError);
+    const dateInput = inputChanger("date", date, form, setIsValid, setError);
 
-      setIsValid(false)
-      setError("Uno de los campos está vacío.")
-      return false
-    }
-
-    if(form.get("petname").length < 3 
-    || form.get("ownername").length < 3 
-    || form.get("sintomas").length < 3) {
-
-      setIsValid(false)
-      setError("Uno de los campos tiene poca información.")
-      return false
-    }
+    if(!pet) return false
+    if(!own) return false
+    if(!syntom) return false
+    if(!dateInput) return false
 
     return true
+}
+
+const inputChanger = (item, input, form, setIsValid, setError) => {
+
+    if(form.get(item).length < 3  || form.get(item) === null) {
+
+        input.style.borderColor = 'red';
+        setIsValid(false);
+        setError("Uno de los campos contiene poca información o esta vacío");
+        return false
+
+    } else return true
 }
 
 export {validatorForm}

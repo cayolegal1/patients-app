@@ -12,7 +12,6 @@ const FormInputs = ({value, updateValue, addPatient}) => {
             name="petname"
             id="petname"
             placeholder="Pitufina"
-            value={value.petname}
             onInput={updateValue}
             />
 
@@ -27,7 +26,6 @@ const FormInputs = ({value, updateValue, addPatient}) => {
             name="ownername"
             id="ownername"
             placeholder="Owen"
-            value={value.ownername}
             onInput={updateValue}
             />
         </div>
@@ -41,7 +39,6 @@ const FormInputs = ({value, updateValue, addPatient}) => {
             name="email"
             id="email"
             placeholder="owen@outlook.com"
-            value={value.email}
             onInput={updateValue}
             />
         </div>
@@ -54,7 +51,6 @@ const FormInputs = ({value, updateValue, addPatient}) => {
             type="date"
             name="date"
             id="date"
-            value={value.date}
             onInput={updateValue}
             />
         </div>
@@ -66,7 +62,6 @@ const FormInputs = ({value, updateValue, addPatient}) => {
             name="sintomas"
             id="sintomas"
             placeholder="Describe los síntomas"
-            value={value.sintomas}
             onInput={updateValue}
             />
         </div>
@@ -77,7 +72,7 @@ const FormInputs = ({value, updateValue, addPatient}) => {
         className="mt-5 cursor-pointer bg-indigo-600 p-2 rounded-md text-white w-full font-bold hover:bg-indigo-700 transition-all"
         onClick={addPatient}
         />
-        
+
     </>
   )
 }

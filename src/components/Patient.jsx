@@ -1,4 +1,5 @@
 import React from 'react'
+import PatientButton from './PatientButton'
 
 const Patient = ({patient, setPatients}) => {
 
@@ -38,23 +39,8 @@ const Patient = ({patient, setPatients}) => {
         <span className='font-normal normal-case'> {patient.sintomas.trim()}</span>
         </p>
 
-        <div className="mt-5 flex justify-between">
-          
-          <button 
-            className="font-bold rounded bg-sky-600 py-2 px-4 text-white hover:bg-sky-700 transition-colors"> 
+        <PatientButton filterPatients={filterPatients} />
 
-            Editar
-
-          </button>
-
-          <button 
-            className="font-bold rounded bg-red-600 py-2 px-2 text-white hover:bg-red-700 transition-colors"
-            onClick={filterPatients}>
-
-            Eliminar 
-          </button>
-
-        </div>
     </div>
   )
 }
