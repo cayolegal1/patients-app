@@ -1,33 +1,20 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import FormInputs from "./FormInputs";
 import FormTitle from "./FormTitle";
 import { validatorForm } from "../helpers/validator";
+import { PatientsContext } from "../App";
 
-const Form = ({setPatients}) => {
-
+const Form = () => {
+  
+  //Estados
   const [isValid, setIsValid] = useState(true);
-
+  
   const [error, setError] = useState('');
 
-  const [value, setValue] = useState({});
+  //Contexto
+  const {setPatients, value, setValue} = useContext(PatientsContext);
 
-  const updateValue = e => {
-
-    let inputValue = e.target.value;
-
-    setValue(val => (
-      {
-
-      ...val, 
-
-      [e.target.name]: inputValue.trim(),
-
-      id: Math.random() * 1120
-
-      }))
-  } 
-
-
+  //Métodos
   const addPatient = e => {
     
     e.preventDefault();
@@ -43,8 +30,6 @@ const Form = ({setPatients}) => {
       setIsValid(true)
 
       setPatients(prev => ([value, ...prev]))   
-
-      console.log(value)
   
       setValue({});
           
@@ -52,7 +37,6 @@ const Form = ({setPatients}) => {
 
     }   
   }
-
 
   return (
 
@@ -71,7 +55,7 @@ const Form = ({setPatients}) => {
           </div>  
         }
 
-        <FormInputs value={value} updateValue={updateValue} addPatient={addPatient}/>
+        <FormInputs addPatient={addPatient}/>
 
       </form>
 

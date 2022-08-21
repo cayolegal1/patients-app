@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PatientsContext } from '../App';
 import PatientButton from './PatientButton'
 
-const Patient = ({patient, setPatients}) => {
+const Patient = ({patient}) => {
 
+  const {setPatients} = useContext(PatientsContext);
+  
   const filterPatients = () => {
 
     setPatients(prev => {
@@ -10,6 +13,7 @@ const Patient = ({patient, setPatients}) => {
       const filter = prev.filter(item => item != patient)
       return filter
     })
+
   }
   return (
     

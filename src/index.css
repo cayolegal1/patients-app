@@ -2,3 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@media screen and (max-width: 500px) {
+    
+    #mq {
+
+        margin-right: 10%;
+        font-size: 18px !important;
+    }
+
+    #mq-title {
+
+        font-size: 30px;
+    }
+
+}

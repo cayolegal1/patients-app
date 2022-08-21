@@ -1,29 +1,42 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import Form from './components/Form'
 import Header from './components/Header'
 import PatientsList from './components/PatientsList'
+export const PatientsContext = createContext();
 
 function App() {
 
- const [patients, setPatients] = useState([])
+  const [patients, setPatients] = useState([])
 
- document.title = "Veterinaria - Pacientes App"
+  const [value, setValue] = useState({});
 
   return (
 
-    <div className='container mx-auto mt-10'>
+    <PatientsContext.Provider 
+      value={
+        { 
+          patients,
+          setPatients, 
+          value,
+          setValue
+        }
+      }>
 
-      <Header />
+      <div className='container mx-auto mt-10'>
 
-      <div className='mt-12 md:flex'>
+        <Header />
 
-        <Form setPatients={setPatients}/>
-        
-        <PatientsList patients={patients} setPatients={setPatients}/>
+        <div className='mt-12 md:flex'>
+
+          <Form />
+          
+          <PatientsList />
+
+        </div>
 
       </div>
 
-    </div>
+    </PatientsContext.Provider >
   )
 }
 

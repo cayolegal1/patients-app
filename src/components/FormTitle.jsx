@@ -3,9 +3,9 @@ import React from 'react'
 const FormTitle = () => {
   return (
     <>
-        <h1 className="font-black text-2xl">Seguimiento Pacientes</h1>
+        <h1 className="font-black text-2xl" id='mq'>Seguimiento Pacientes</h1>
 
-        <p className="mt-2 text-lg">
+        <p className="mt-2 text-lg" id='mq'>
 
         Añade pacientes y 
         
