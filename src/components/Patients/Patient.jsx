@@ -1,20 +1,20 @@
 import React, { useContext } from 'react'
-import { PatientsContext } from '../App';
+import { PatientsContext } from '../../App';
 import PatientButton from './PatientButton'
 
 const Patient = ({patient}) => {
 
   const {setPatients} = useContext(PatientsContext);
-  
-  const filterPatients = () => {
+
+  const deletePatient = () => {
 
     setPatients(prev => {
 
       const filter = prev.filter(item => item != patient)
       return filter
     })
-
   }
+
   return (
     
     <div className="text-left mt-5 ml-10 p-8 bg-white shadow-md rounded-xl mb-5">
@@ -43,7 +43,7 @@ const Patient = ({patient}) => {
         <span className='font-normal normal-case'> {patient.sintomas.trim()}</span>
         </p>
 
-        <PatientButton filterPatients={filterPatients} />
+        <PatientButton deletePatient={deletePatient}/>
 
     </div>
   )

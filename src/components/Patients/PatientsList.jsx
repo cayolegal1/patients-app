@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { PatientsContext } from '../App';
+import { PatientsContext } from '../../App';
 import Patient from './Patient'
 
 const PatientsList = () => {

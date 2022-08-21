@@ -1,7 +1,7 @@
-import React from 'react'
+const PatientButton = ({deletePatient}) => {
 
-const PatientButton = ({filterPatients}) => {
   return (
+    
     <div className="mt-5 flex justify-between">
           
           <button 
@@ -13,7 +13,7 @@ const PatientButton = ({filterPatients}) => {
 
           <button 
             className="font-bold rounded bg-red-600 py-2 px-2 text-white hover:bg-red-700 transition-colors"
-            onClick={filterPatients}>
+            onClick={deletePatient}>
 
             Eliminar 
 

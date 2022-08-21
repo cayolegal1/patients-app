@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { PatientsContext } from '../App';
+import { PatientsContext } from '../../App';
 
 const FormInputs = ({addPatient}) => {
 

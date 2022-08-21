@@ -1,8 +1,8 @@
 import { useState, useContext } from "react"
 import FormInputs from "./FormInputs";
 import FormTitle from "./FormTitle";
-import { validatorForm } from "../helpers/validator";
-import { PatientsContext } from "../App";
+import { validatorForm } from "../../helpers/validator";
+import { PatientsContext } from "../../App";
 
 const Form = () => {
   
