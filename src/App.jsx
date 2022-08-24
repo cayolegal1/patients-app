@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 import Form from './components/Form/Form'
 import Header from './components/Header'
 import PatientsList from './components/Patients/PatientsList'
@@ -6,9 +6,30 @@ export const PatientsContext = createContext();
 
 function App() {
 
+  //Estados
   const [patients, setPatients] = useState([])
 
-  const [value, setValue] = useState({});
+  const [value, setValue] = useState({})
+
+  const [patientEdit, setPatientEdit] = useState({})
+
+  //Efectos
+
+  useEffect(() => {
+
+    const patientsInStorage = localStorage.getItem("patients");
+
+    const localPatients = JSON.parse(patientsInStorage);
+
+    if(localPatients.length > 0) setPatients(localPatients);
+
+  }, [])
+
+  useEffect(() => {
+
+    localStorage.setItem('patients', JSON.stringify(patients));
+
+  }, [patients])
 
   return (
 
@@ -17,9 +38,11 @@ function App() {
       value={
         { 
           patients,
-          setPatients, 
+          patientEdit,
           value,
-          setValue
+          setPatients, 
+          setPatientEdit,
+          setValue,
         }
     }>
 

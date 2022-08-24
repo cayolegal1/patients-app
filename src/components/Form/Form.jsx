@@ -1,8 +1,8 @@
 import { useState, useContext } from "react"
-import FormInputs from "./FormInputs";
-import FormTitle from "./FormTitle";
 import { validatorForm } from "../../helpers/validator";
 import { PatientsContext } from "../../App";
+import FormInputs from "./FormInputs";
+import FormTitle from "./FormTitle";
 
 const Form = () => {
   
@@ -37,7 +37,7 @@ const Form = () => {
 
     }   
   }
-
+  
   return (
 
     <div className="md:w-1/2 lg:w-2/5 md:flex flex-col ml-8 text-center mb-2">

@@ -3,8 +3,11 @@ import { PatientsContext } from '../../App';
 
 const FormInputs = ({addPatient}) => {
 
-    const {setValue} = useContext(PatientsContext);
+    //Contexto
+    const {setValue, patients} = useContext(PatientsContext);
 
+
+    //Métodos
     const updateValue = e => {
 
         let inputValue = e.target.value;
@@ -91,6 +94,7 @@ const FormInputs = ({addPatient}) => {
             value="Agregar" 
             className="mt-5 cursor-pointer bg-indigo-600 p-2 rounded-md text-white w-full font-bold hover:bg-indigo-700 transition-all"
             onClick={addPatient}
+            id="add"
             />
 
         </>

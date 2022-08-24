@@ -1,10 +1,11 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { PatientsContext } from '../../App';
 import Patient from './Patient'
 
 const PatientsList = () => {
 
-  const {patients, setPatients} = useContext(PatientsContext);
+  //Contexto
+  const {patients} = useContext(PatientsContext);
 
   return (
     <div className='md:w-1/2 md:flex flex-col text-center mt-10 md:mt-0'>
