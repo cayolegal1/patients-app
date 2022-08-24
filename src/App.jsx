@@ -17,9 +17,9 @@ function App() {
 
   useEffect(() => {
 
-    const patientsInStorage = localStorage.getItem("patients") ?? [];
+    const patientsInStorage = localStorage.getItem("patients") || []
 
-    const localPatients = JSON.parse(patientsInStorage);
+    const localPatients = JSON.parse(patientsInStorage)
 
     if(localPatients.length > 0) setPatients(localPatients);
 
@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
 
-    localStorage.setItem('patients', JSON.stringify(patients));
+    localStorage.setItem('patients', JSON.stringify(patients))
 
   }, [patients])
 
